@@ -3,7 +3,7 @@ Name: Abel Goy
 Title: Rocket Patrol Revenge of the Spaceship
 Approximate Time: * hours
 Mods: 
-5 points: High Score, 
+5 points: High Score, 'FIRE' UI Text
 
 Citations: 
 */

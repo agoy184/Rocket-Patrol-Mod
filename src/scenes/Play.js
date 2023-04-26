@@ -51,6 +51,7 @@ class Play extends Phaser.Scene {
 
         //SCORE initialize
         this.p1Score = 0;
+        this.fireDisplay = "FIRE";
         let scoreConfig = {
             fontFamily: 'Courier',
         fontSize: '28px',
@@ -65,8 +66,10 @@ class Play extends Phaser.Scene {
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         this.scoreRight = this.add.text((game.config.width - 3.5 * (borderUISize + borderPadding)), borderUISize + borderPadding*2, this.hiScore, scoreConfig);//display high score
+        this.fireText = this.add.text(game.config.width/2, borderUISize + borderPadding*2, this.fireDisplay, scoreConfig);//Fire UI
+        this.fireText.visible = false;
         this.gameOver = false;
-
+            
         // 60 sec clock
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(6000, () => {
@@ -77,6 +80,12 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        if (this.p1Rocket.isFiring) {//Fire UI checks
+            this.fireText.visible = true;
+        }
+        if (!this.p1Rocket.isFiring) {
+            this.fireText.visible = false;
+        }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             if (this.p1Score > this.hiScore || this.hiScore == null) {//High score checks
                 this.hiScore = this.p1Score;
