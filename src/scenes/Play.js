@@ -64,12 +64,12 @@ class Play extends Phaser.Scene {
         fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
-
+        this.scoreRight = this.add.text((game.config.width - 3.5 * (borderUISize + borderPadding)), borderUISize + borderPadding*2, this.hiScore, scoreConfig);//display high score
         this.gameOver = false;
 
         // 60 sec clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(60000, () => {
+        this.clock = this.time.delayedCall(6000, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
@@ -78,9 +78,15 @@ class Play extends Phaser.Scene {
 
     update() {
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+            if (this.p1Score > this.hiScore || this.hiScore == null) {//High score checks
+                this.hiScore = this.p1Score;
+            }
             this.scene.restart();
         }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+            if (this.p1Score > this.hiScore || this.hiScore == null) {
+                this.hiScore = this.p1Score;
+            }
             this.scene.start("menuScene");
         }
         this.starfield.tilePositionX -= 4;
@@ -127,6 +133,7 @@ class Play extends Phaser.Scene {
         });       
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
+        this.scoreRight.text = this.hiScore;
         this.sound.play('sfx_explosion');
       }
 }

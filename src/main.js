@@ -1,3 +1,12 @@
+/*
+Name: Abel Goy
+Title: Rocket Patrol Revenge of the Spaceship
+Approximate Time: * hours
+Mods: 
+5 points: High Score, 
+
+Citations: 
+*/
 let config = {
     type: Phaser.CANVAS,
     width: 640,
