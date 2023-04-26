@@ -9,6 +9,9 @@ class Play extends Phaser.Scene {
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
 
+        //music (Kevin MacLeod Dance of the Sugar Plum Fairies)
+        this.load.audio('bg_music', './assets/dance_plum.mp3');
+
         // load images/tile sprites
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
@@ -77,6 +80,9 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
+        //start music
+        this.sound.play('bg_music');
     }
 
     update() {
@@ -90,12 +96,14 @@ class Play extends Phaser.Scene {
             if (this.p1Score > this.hiScore || this.hiScore == null) {//High score checks
                 this.hiScore = this.p1Score;
             }
+            this.sound.stopAll();//stop music
             this.scene.restart();
         }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             if (this.p1Score > this.hiScore || this.hiScore == null) {
                 this.hiScore = this.p1Score;
             }
+            this.sound.stopAll();//stop music
             this.scene.start("menuScene");
         }
         this.starfield.tilePositionX -= 4;
