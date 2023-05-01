@@ -9,13 +9,21 @@ Mods:
         30 sec Speed Increase, 
         New Scrolling tile sprite,
         Control Rocket after fired, 
-
+(30)
 10 pts: 4 Random Explosion SFX,
         Display time remainings,
-        Create New Title Screen
-        //
-
+        Texture atlas (Santa's Sleigh?)
+        Create New Title Screen (Add multiarrow icy BG?)
+(40)
+15 pts: Create new enemy spaceship (Reindeer?)
+        Mouse Control?
+(30)
 Citations: 
+https://freesound.org/people/derplayer/sounds/587186/
+https://freesound.org/people/derplayer/sounds/587185/
+https://freesound.org/people/derplayer/sounds/587189/
+https://www.youtube.com/watch?v=jUOZc27B1f4
+https://www.w3schools.com/js/js_random.asp
 */
 let config = {
     type: Phaser.CANVAS,
