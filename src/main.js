@@ -7,8 +7,10 @@ Mods:
         'FIRE' UI Text, 
         Background Music, 
         30 sec Speed Increase, 
+        New Scrolling tile sprite,
         Control Rocket after fired, 
 10 pts: Display time remainings
+        //
 
 Citations: 
 */
