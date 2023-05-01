@@ -12,6 +12,7 @@ Mods:
 
 10 pts: 4 Random Explosion SFX,
         Display time remainings,
+        Create New Title Screen
         //
 
 Citations: 
