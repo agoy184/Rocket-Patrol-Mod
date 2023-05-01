@@ -6,7 +6,10 @@ class Play extends Phaser.Scene {
     preload() {
         //audio
         this.load.audio('sfx_select', './assets/blip_select12.wav');
-        this.load.audio('sfx_explosion', './assets/explosion38.wav');
+        this.load.audio('sfx_explosion1', './assets/explosion00.wav');//https://freesound.org/people/derplayer/sounds/587186/
+        this.load.audio('sfx_explosion2', './assets/explosion01.wav');//https://freesound.org/people/derplayer/sounds/587185/
+        this.load.audio('sfx_explosion3', './assets/explosion05.wav');//https://freesound.org/people/derplayer/sounds/587189/
+        this.load.audio('sfx_explosion4', './assets/explosion38.wav');//(Default sound from Nathan)
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
 
         //music (Kevin MacLeod Dance of the Sugar Plum Fairies)
@@ -173,6 +176,19 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.scoreRight.text = this.hiScore;
-        this.sound.play('sfx_explosion');
+        let randomSound = Math.floor(Math.random() * 4) + 1;//From https://www.w3schools.com/js/js_random.asp
+        if (randomSound == 1) {
+            this.sound.play('sfx_explosion1');
+            console.log("1");
+        } else if (randomSound == 2) {
+            this.sound.play('sfx_explosion2');
+            console.log("2");
+        } else if (randomSound == 3) {
+            this.sound.play('sfx_explosion3');
+            console.log("3");
+        } else if (randomSound == 4) {
+            this.sound.play('sfx_explosion4');
+            console.log("4");
+        }
       }
 }

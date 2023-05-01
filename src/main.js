@@ -9,7 +9,9 @@ Mods:
         30 sec Speed Increase, 
         New Scrolling tile sprite,
         Control Rocket after fired, 
-10 pts: Display time remainings
+
+10 pts: 4 Random Explosion SFX,
+        Display time remainings,
         //
 
 Citations: 
