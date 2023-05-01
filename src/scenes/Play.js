@@ -55,6 +55,7 @@ class Play extends Phaser.Scene {
         //SCORE initialize
         this.p1Score = 0;
         this.fireDisplay = "FIRE";
+        this.timeLeft = 3600;
         let scoreConfig = {
             fontFamily: 'Courier',
         fontSize: '28px',
@@ -114,10 +115,26 @@ class Play extends Phaser.Scene {
             this.ship03.update();     
         }
         this.clock = this.time.delayedCall(30000, () => {//Speed increase at 30 sec
-            this.ship01.moveSpeed = 5;
-            this.ship02.moveSpeed = 5;
-            this.ship03.moveSpeed = 5;            
+            this.ship01.moveSpeed = 6;
+            this.ship02.moveSpeed = 6;
+            this.ship03.moveSpeed = 6;            
         }, null, this);
+        this.timeLeft--;
+        let timerConfig = { 
+            fontFamily: 'Courier',
+        fontSize: '28px',
+        backgroundColor: '#F3B141',
+        color: '#843605',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 100
+        }
+        if (this.timeLeft >= 0) {
+            this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), timerConfig);
+        }
         if(this.checkCollision(this.p1Rocket, this.ship03)){
             this.p1Rocket.reset();
             this.shipExplode(this.ship03);
