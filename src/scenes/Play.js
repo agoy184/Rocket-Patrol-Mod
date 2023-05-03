@@ -83,14 +83,17 @@ class Play extends Phaser.Scene {
         this.fireText = this.add.text(game.config.width/2, borderUISize + borderPadding*2, this.fireDisplay, scoreConfig);//Fire UI
         this.fireText.visible = false;
         this.gameOver = false;
-            
+
+        //60 sec clock
+        this.timeLeft = 3600;
+        this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), scoreConfig);
+
         // 30 second speedup
         this.clock = this.time.delayedCall(30000, () => {
             this.ship01.moveSpeed = 5;
             this.ship02.moveSpeed = 5;
             this.ship03.moveSpeed = 5;
         }, null, this);
-        this.timeLeft = 3600;//60 sec clock
         //start music
         this.sound.play('bg_music');
     }
@@ -140,7 +143,7 @@ class Play extends Phaser.Scene {
         }
         this.timeLeft--;
         if (this.timeLeft >= 0) {
-            this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), textConfig);
+            this.timeLeftUI.text = Math.ceil(this.timeLeft / 60);
         }
         if (this.timeLeft <= 0) {//Time checker
             textConfig.fixedWidth = 0;
@@ -168,7 +171,6 @@ class Play extends Phaser.Scene {
             this.shipExplode(this.ship01);
             this.timeLeft += 60;
         }       
-        
     }
 
     checkCollision(rocket, ship) {
