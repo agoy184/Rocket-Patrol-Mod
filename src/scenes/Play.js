@@ -80,20 +80,13 @@ class Play extends Phaser.Scene {
         this.fireText.visible = false;
         this.gameOver = false;
             
-        // 60 sec clock
-        scoreConfig.fixedWidth = 0;
-        /*this.clock = this.time.delayedCall(60000, () => {
-            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
-            this.gameOver = true;
-        }, null, this);*/
         // 30 second speedup
         this.clock = this.time.delayedCall(30000, () => {
             this.ship01.moveSpeed = 5;
             this.ship02.moveSpeed = 5;
             this.ship03.moveSpeed = 5;
         }, null, this);
-        this.timeLeft = 360;
+        this.timeLeft = 3600;//60 sec clock
         //start music
         this.sound.play('bg_music');
     }
@@ -143,7 +136,7 @@ class Play extends Phaser.Scene {
         if (this.timeLeft >= 0) {
             this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), textConfig);
         }
-        if (this.timeLeft <= 0) {
+        if (this.timeLeft <= 0) {//Time checker
             textConfig.fixedWidth = 0;
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', textConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', textConfig).setOrigin(0.5);
