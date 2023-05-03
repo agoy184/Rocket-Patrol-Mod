@@ -15,9 +15,9 @@ Mods:
         Texture atlas (Santa's Sleigh?)
         Create New Title Screen
 (30/40)
-15 pts: Create new enemy spaceship (Reindeer?)
+15 pts: Create New enemy spaceship
         Mouse Control?
-(0/30)
+(15/30)
 Citations: 
 https://freesound.org/people/derplayer/sounds/587186/
 https://freesound.org/people/derplayer/sounds/587185/
