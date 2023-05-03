@@ -9,15 +9,15 @@ Mods:
         30 sec Speed Increase, 
         New Scrolling tile sprite,
         Control Rocket after fired, 
-(30)
+(30/30)
 10 pts: 4 Random Explosion SFX,
         Display time remainings,
         Texture atlas (Santa's Sleigh?)
-        Create New Title Screen (Add multiarrow icy BG?)
-(40)
+        Create New Title Screen
+(30/40)
 15 pts: Create new enemy spaceship (Reindeer?)
         Mouse Control?
-(30)
+(0/30)
 Citations: 
 https://freesound.org/people/derplayer/sounds/587186/
 https://freesound.org/people/derplayer/sounds/587185/

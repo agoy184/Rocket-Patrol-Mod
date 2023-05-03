@@ -6,7 +6,8 @@ class Menu extends Phaser.Scene {
     preload() {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
-        this.load.audio('sfx_rocket', './assets/rocket_shot.wav');        
+        this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.image('menu_sign', './assets/SignWBG.png');
     }
 
     create() {
@@ -22,6 +23,9 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        
+        // show menu bg
+        var menu_sign = this.add.sprite(game.config.width/2,game.config.height/2,"menu_sign");
         
         // show menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'CHRISTMAS PATROL!!', menuConfig).setOrigin(0.5);
