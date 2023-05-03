@@ -58,7 +58,6 @@ class Play extends Phaser.Scene {
         //SCORE initialize
         this.p1Score = 0;
         this.fireDisplay = "FIRE";
-        this.timeLeft = 3600;
         let scoreConfig = {
             fontFamily: 'Courier',
         fontSize: '28px',
@@ -84,7 +83,13 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
-
+        // 30 second speedup
+        this.clock = this.time.delayedCall(30000, () => {
+            this.ship01.moveSpeed = 5;
+            this.ship02.moveSpeed = 5;
+            this.ship03.moveSpeed = 5;
+        }, null, this);
+        this.timeLeft = 3600;
         //start music
         this.sound.play('bg_music');
     }
@@ -117,12 +122,6 @@ class Play extends Phaser.Scene {
             this.ship02.update();
             this.ship03.update();     
         }
-        this.clock = this.time.delayedCall(30000, () => {//Speed increase at 30 sec
-            this.ship01.moveSpeed = 6;
-            this.ship02.moveSpeed = 6;
-            this.ship03.moveSpeed = 6;            
-        }, null, this);
-        this.timeLeft--;
         let timerConfig = { 
             fontFamily: 'Courier',
         fontSize: '28px',
@@ -135,6 +134,7 @@ class Play extends Phaser.Scene {
         },
         fixedWidth: 100
         }
+        this.timeLeft--;
         if (this.timeLeft >= 0) {
             this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), timerConfig);
         }
@@ -179,16 +179,12 @@ class Play extends Phaser.Scene {
         let randomSound = Math.floor(Math.random() * 4) + 1;//From https://www.w3schools.com/js/js_random.asp
         if (randomSound == 1) {
             this.sound.play('sfx_explosion1');
-            console.log("1");
         } else if (randomSound == 2) {
             this.sound.play('sfx_explosion2');
-            console.log("2");
         } else if (randomSound == 3) {
             this.sound.play('sfx_explosion3');
-            console.log("3");
         } else if (randomSound == 4) {
             this.sound.play('sfx_explosion4');
-            console.log("4");
         }
       }
 }
