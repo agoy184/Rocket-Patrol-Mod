@@ -9,15 +9,16 @@ Mods:
         30 sec Speed Increase, 
         New Scrolling tile sprite,
         Control Rocket after fired, 
-(30/30)
+(30)
 10 pts: 4 Random Explosion SFX,
         Display time remainings,
-        ? Texture atlas ?
         Create New Title Screen
-(30/40)
+        Parallax Scrolling
+(40)
 15 pts: Create New enemy spaceship
         Timing/scoring mechanism that adds time to  clock for successful hits
-(30/30)
+(30)
+30 + 40 + 30 = 100 pts
 Citations: 
 https://freesound.org/people/derplayer/sounds/587186/
 https://freesound.org/people/derplayer/sounds/587185/

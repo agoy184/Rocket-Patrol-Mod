@@ -19,6 +19,8 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.image('waves', './assets/waves.png');
+        this.load.image('mountains', './assets/mountains.png');
         this.load.image('sleigh', './assets/sleigh.png');
 
         //load spritesheet
@@ -28,6 +30,8 @@ class Play extends Phaser.Scene {
     create() {
         //tile sprite background
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.mountains = this.add.tileSprite(0, game.config.height - borderUISize*4, 640, 144, 'mountains').setOrigin(0, 0);
+        this.waves = this.add.tileSprite(0, game.config.height - borderUISize*2, 640, 48, 'waves').setOrigin(0, 0);
 
         // green UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
@@ -113,6 +117,8 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
         this.starfield.tilePositionX -= 4;
+        this.mountains.tilePositionX += 3;
+        this.waves.tilePositionX -= 2;
         if (!this.gameOver) {
             this.p1Rocket.update();
             this.ship01.update();
