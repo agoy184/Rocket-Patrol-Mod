@@ -1,7 +1,7 @@
 /*
 Name: Abel Goy
 Title: Rocket Patrol Revenge of the Spaceship
-Approximate Time: * hours
+Approximate Time: 10 hours
 Mods: 
 5 pts:  High Score, 
         'FIRE' UI Text, 
