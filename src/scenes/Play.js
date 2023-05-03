@@ -82,18 +82,18 @@ class Play extends Phaser.Scene {
             
         // 60 sec clock
         scoreConfig.fixedWidth = 0;
-        this.clock = this.time.delayedCall(60000, () => {
+        /*this.clock = this.time.delayedCall(60000, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
-        }, null, this);
+        }, null, this);*/
         // 30 second speedup
         this.clock = this.time.delayedCall(30000, () => {
             this.ship01.moveSpeed = 5;
             this.ship02.moveSpeed = 5;
             this.ship03.moveSpeed = 5;
         }, null, this);
-        this.timeLeft = 3600;
+        this.timeLeft = 360;
         //start music
         this.sound.play('bg_music');
     }
@@ -127,7 +127,7 @@ class Play extends Phaser.Scene {
             this.ship03.update();  
             this.ship04.update();   
         }
-        let timerConfig = { 
+        let textConfig = { 
             fontFamily: 'Courier',
         fontSize: '28px',
         backgroundColor: '#F3B141',
@@ -141,23 +141,33 @@ class Play extends Phaser.Scene {
         }
         this.timeLeft--;
         if (this.timeLeft >= 0) {
-            this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), timerConfig);
+            this.timeLeftUI = this.add.text(borderUISize + borderPadding + 125, borderUISize + borderPadding*2, Math.ceil(this.timeLeft / 60), textConfig);
         }
-        if(this.checkCollision(this.p1Rocket, this.ship04)){
+        if (this.timeLeft <= 0) {
+            textConfig.fixedWidth = 0;
+            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', textConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', textConfig).setOrigin(0.5);
+            this.gameOver = true;
+        }
+        if(this.checkCollision(this.p1Rocket, this.ship04)){//Mechanism adding time implemented here
             this.p1Rocket.reset();
             this.shipExplode(this.ship04);
+            this.timeLeft += 180;
         }       
         if(this.checkCollision(this.p1Rocket, this.ship03)){
             this.p1Rocket.reset();
             this.shipExplode(this.ship03);
+            this.timeLeft += 60;
         }       
         if(this.checkCollision(this.p1Rocket, this.ship02)){
             this.p1Rocket.reset();
             this.shipExplode(this.ship02);
+            this.timeLeft += 60;
         }       
         if(this.checkCollision(this.p1Rocket, this.ship01)){
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
+            this.timeLeft += 60;
         }       
         
     }

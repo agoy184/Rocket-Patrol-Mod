@@ -12,12 +12,12 @@ Mods:
 (30/30)
 10 pts: 4 Random Explosion SFX,
         Display time remainings,
-        Texture atlas (Santa's Sleigh?)
+        ? Texture atlas ?
         Create New Title Screen
 (30/40)
 15 pts: Create New enemy spaceship
-        Mouse Control?
-(15/30)
+        Timing/scoring mechanism that adds time to  clock for successful hits
+(30/30)
 Citations: 
 https://freesound.org/people/derplayer/sounds/587186/
 https://freesound.org/people/derplayer/sounds/587185/
